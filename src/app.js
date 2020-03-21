@@ -1,70 +1,54 @@
-// console.log('Running');
-
-// //template 
-// //using an enclosing tag (div) in order for babble to work with 2 adjacent elements
-// //for clarity: use parenthesis
-const app = { 
-    title: 'Indecision App',
-    subtitle: 'Write Away',
-    options: []
-};
-
-const onForSubmit = (e) => {
-    e.preventDefault();
-
-    const option = e.target.elements.option.value;
-    if (option) 
-    {
-        app.options.push(option);
-        e.target.elements.option.value = '';
-        render();
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>Indecision App</h1>
+                <h2>Let the computer choose for you.</h2>
+            </div>
+        ); 
     }
 }
 
-const removeAllForms  = () => {
-    app.options = [];
-    if (app.options = [])
-    render();
+class Action extends React.Component {
+    render() {
+        return (
+            <div>
+                <button>Press me</button>
+            </div>
+        );
+    }
 }
 
-const onMakeDecision = () => {
-    const randomNum = Math.floor(Math.random() * app.options.length);
-    const selectedOption = app.options[randomNum];
-    alert(selectedOption);
-    console.log(randomNum);
+class Option extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2>This is an option component.</h2>
+            </div>
+        );
+    }
 }
 
-//subtitle only renders if subtitle exists
-//conditional statement on options
-const render = () => {
-    const template = (
-        <div>
-
-            <h1>{app.title}</h1>
-
-            {app.subtitle && <p>{app.subtitle}</p>}
-
-            <p>{app.options.length > 0 ? 'Here are your options:' : 'No options'}</p>
-
-            <button disabled={app.options.length === 0} onClick={onMakeDecision}> Choose </button>
-
-            <button onClick={removeAllForms}>Remove All</button>
-
-            <p>{app.options.length}</p>
-
-            <ol>
-                {
-                    app.options.map((option) => <li key={app.option}>{option}</li>)
-                }
-                <form onSubmit={onForSubmit}>
-                    <input type="text" name="option"></input>
-                    <button> Add button </button>
+class AddOptions extends React.Component {
+    render() {
+        return (
+            <div>
+                <form>
+                    <input type="text"></input>
+                    <button>Add</button>
                 </form>
-            </ol>
-
-        </div>
-        );   
-    ReactDOM.render(template, appRoot);
+            </div>
+        );
+    }
 }
-const appRoot = document.getElementById('app');
-render();
+
+const jsx = (
+    <div>
+        <Header />
+        <Action />
+        <Option />
+        <AddOptions />
+    </div>
+);
+
+ReactDOM.render(jsx, document.getElementById('app'));
