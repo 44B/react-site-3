@@ -11,9 +11,28 @@ class IndecisionApp extends React.Component {
         };
     }
 
+    componentDidMount() {
+        const json = localStorage.getItem('options');
+        const options = JSON.parse(json);
+
+        this.setState(() => ({ options }));
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json);
+        }
+    }
+
+    componentWillUnmount (){
+        console.log("Unmount.")
+    }
+
     handleDeleteOptions() {
         this.setState(() => ({ options: [] }));
     }
+
     handleDeleteOption(optionToRemove) {
         this.setState((prevState) => ({
             options: prevState.options.filter((options) => optionToRemove !== options)
@@ -109,7 +128,7 @@ const Option = (props) => {
                 props.handleDeleteOption(props.optionText);
             }}
             >
-            X
+            Remove
             </button>
         </div>
     );
@@ -121,6 +140,7 @@ class AddOption extends React.Component {
         this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
             error: undefined
+
         };
     }
     handleAddOption(e){
