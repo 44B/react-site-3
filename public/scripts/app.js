@@ -50,11 +50,6 @@ var IndecisionApp = function (_React$Component) {
             }
         }
     }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            console.log("Unmount.");
-        }
-    }, {
         key: 'handleDeleteOptions',
         value: function handleDeleteOptions() {
             this.setState(function () {

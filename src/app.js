@@ -30,10 +30,6 @@ class IndecisionApp extends React.Component {
         }
     }
 
-    componentWillUnmount (){
-        console.log("Unmount.")
-    }
-
     handleDeleteOptions() {
         this.setState(() => ({ options: [] }));
     }
