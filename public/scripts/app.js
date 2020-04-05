@@ -34,9 +34,11 @@ var IndecisionApp = function (_React$Component) {
                 var json = localStorage.getItem('options');
                 var options = JSON.parse(json);
 
-                this.setState(function () {
-                    return { options: options };
-                });
+                if (options) {
+                    this.setState(function () {
+                        return { options: options };
+                    });
+                }
             } catch (e) {
                 //Does nothing at all.
             }
