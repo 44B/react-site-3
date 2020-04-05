@@ -22,7 +22,6 @@ class IndecisionApp extends React.Component {
         } catch (e) {
             //Does nothing at all.
         }
-        
     }
 
     componentDidUpdate(prevProps, prevState) {
