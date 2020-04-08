@@ -6,7 +6,7 @@
   "scripts": {
     "server": "live-server public/",
     "build": "webpack",
-    "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+    "dev-server":"webpack-dev-server"
   },
   "dependencies": {
     "babel-cli": "6.24.1",
@@ -17,6 +17,7 @@
     "live-server": "^1.2.1",
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "webpack": "3.1.0"
+    "webpack": "3.1.0",
+    "webpack-dev-server": "2.5.1"
   }
 }
