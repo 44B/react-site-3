@@ -11,9 +11,16 @@ module.exports = {
             loader: 'babel-loader',
             test: /\.js$/,
             exclude: /node_modules/
-            }]
-        },
-        devServer: {
-            contentBase: path.join(__dirname, 'public')
-        }
-    };
+    }, {
+        test: /\.scss$/,
+        use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader'
+            ]
+        }]
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'public')
+    }
+};
